@@ -1,0 +1,5 @@
+framework module docsdk {
+  umbrella header "DocSDK.h"
+  export *
+  module * { export * }
+}
