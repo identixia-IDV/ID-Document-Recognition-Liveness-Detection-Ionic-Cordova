@@ -129,9 +129,9 @@ Demo ids: Android `com.identixia.documentreader` · iOS `com.identixia.documentr
 
 The code below shows how to use the license:
 
-https://github.com/identixia-IDV/ID-Document-Recognition-Liveness-Detection-Ionic-Cordova/blob/b8d4b140aa6f3fc47f2382fede0147872870ba90/src/license.ts#L11-L24
+https://github.com/identixia-IDV/ID-Document-Recognition-Liveness-Detection-Ionic-Cordova/blob/b8ee63a4a70ef37fc439386844823c44d1cd1bca/src/license.ts#L11-L24
 
-https://github.com/identixia-IDV/ID-Document-Recognition-Liveness-Detection-Ionic-Cordova/blob/b8d4b140aa6f3fc47f2382fede0147872870ba90/src/SdkContext.tsx#L65-L74
+https://github.com/identixia-IDV/ID-Document-Recognition-Liveness-Detection-Ionic-Cordova/blob/b8ee63a4a70ef37fc439386844823c44d1cd1bca/src/SdkContext.tsx#L65-L74
 
 Capabilities: document recognition and/or document liveness. Please [contact us](#-contact) to get a license for **your own app**.
 
