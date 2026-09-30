@@ -23,7 +23,7 @@ if (present(aar)) {
 }
 
 const url =
-  'https://github.com/identixia-IDV/ID-Document-Recognition-Liveness-Detection-Android/releases/download/v1.0.0/documentreadersdk.aar';
+  'https://github.com/identixia-IDV/ID-Document-Recognition-Liveness-Detection-Android/releases/latest/download/documentreadersdk.aar';
 const dest = aar;
 
 function download(from, to) {

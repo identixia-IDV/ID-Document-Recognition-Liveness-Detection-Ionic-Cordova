@@ -29,14 +29,14 @@ Package: `document-reader-cordova`.
 
 ## <img src="https://api.iconify.design/lucide/clipboard-list.svg?color=%230F766E" width="24" height="24" alt="" /> Basics
 
-Read this once before cloning. Plugin demos ship a **bundled license** for the sample Android / iOS ids. Production apps need a new key. [Initial commands](#-initial-commands) lists clone → run → activate. The example uses the engines already in this repo. Your app installs tag `v1.0.0`.
+Read this once before cloning. Plugin demos ship a **bundled license** for the sample Android / iOS ids. Production apps need a new key. [Initial commands](#-initial-commands) lists clone → place runtime → run → activate options.
 
 | Topic | Basic information |
 | --- | --- |
 | **Product** | On-device **ID document recognition** Ionic Cordova plugin (KYC / eKYC) |
 | **Documents** | Passport, national ID, driver license |
 | **Extracts** | OCR · passport MRZ · barcode / QR · optional document liveness |
-| **Runtime** | Example uses the engines already in this repo. Your app installs tag `v1.0.0` |
+| **Runtime** | Android AAR + iOS framework from Drive zips `PENDING` |
 | **Demo id** | `com.identixia.documentreader` / `.app` (until **12 Aug 2027**) |
 | **Tools** | npm · Cordova · physical arm64 Android / iPhone |
 | **UI** | Wide Camera Home · Gallery / About · one-scroll Result |
@@ -49,11 +49,12 @@ Read this once before cloning. Plugin demos ship a **bundled license** for the s
 
 Must-know path for the sample / example app.
 
-### <img src="https://img.shields.io/badge/-1-0F766E?style=for-the-badge" alt="" /> Clone and run
+### <img src="https://img.shields.io/badge/-1-0F766E?style=for-the-badge" alt="" /> Clone, place runtime, run
 
 ```bash
 git clone https://github.com/identixia-IDV/ID-Document-Recognition-Liveness-Detection-Ionic-Cordova.git
 cd ID-Document-Recognition-Liveness-Detection-Ionic-Cordova
+# place Android + iOS runtimes first
 npm install
 npm run setup:android && npm run android
 npm run setup:ios && npm run ios
@@ -99,14 +100,17 @@ Wait until Home = **Ready**, then Camera / Gallery. Confirm Result / About shows
 
 ## <img src="https://api.iconify.design/lucide/package.svg?color=%230F766E" width="24" height="24" alt="" /> Install
 
-The sample plugin uses `DocumentReaderPlugin/src/android/documentreadersdk.aar` and `docsdk.framework` when those files are already here. `before_plugin_install` downloads the `v1.0.0` GitHub Releases only when a file is missing.
+The example builds with native runtimes already in the clone when present. Missing files are fetched from the `v1.0.0` GitHub Releases.
 
-Your app:
+| | Path after unzip |
+| --- | --- |
+| <img src="https://cdn.simpleicons.org/android/3DDC84" width="14" height="14" alt="" /> Android | `DocumentReaderPlugin/src/android/documentreadersdk.aar` |
+| <img src="https://cdn.simpleicons.org/apple/000000" width="14" height="14" alt="" /> iOS | `DocumentReaderPlugin/src/ios/Frameworks/docsdk.framework` |
 
-```bash
-cordova plugin add https://github.com/identixia-IDV/ID-Document-Recognition-Liveness-Detection-Ionic-Cordova.git#v1.0.0
-```
 
+Customer apps depend on `document-reader-cordova` from this repo at tag `v1.0.0` (Flutter: git; React Native / Ionic: npm / github). Do **not** use a monorepo `path:` dependency in shipping apps.
+
+Prefer package kits (`DocumentCapture`, `ResultParser`) for the same camera / Result path as the sample. Keep `useLegacyPackaging = true` on Android when required by the engine.
 
 ---
 
@@ -115,6 +119,7 @@ cordova plugin add https://github.com/identixia-IDV/ID-Document-Recognition-Live
 ```bash
 git clone https://github.com/identixia-IDV/ID-Document-Recognition-Liveness-Detection-Ionic-Cordova.git
 cd ID-Document-Recognition-Liveness-Detection-Ionic-Cordova
+# place Android + iOS runtimes first
 npm install
 npm run setup:android && npm run android
 npm run setup:ios && npm run ios
@@ -129,9 +134,9 @@ Demo ids: Android `com.identixia.documentreader` · iOS `com.identixia.documentr
 
 The code below shows how to use the license:
 
-https://github.com/identixia-IDV/ID-Document-Recognition-Liveness-Detection-Ionic-Cordova/blob/b8ee63a4a70ef37fc439386844823c44d1cd1bca/src/license.ts#L11-L24
+[https://github.com/identixia-IDV/ID-Document-Recognition-Liveness-Detection-Ionic-Cordova/blob/aec5b6d7ebb66e8ed00a78703057115dcb91533d/src/license.ts#L11-L20](https://github.com/identixia-IDV/ID-Document-Recognition-Liveness-Detection-Ionic-Cordova/blob/aec5b6d7ebb66e8ed00a78703057115dcb91533d/src/license.ts#L11-L20)
 
-https://github.com/identixia-IDV/ID-Document-Recognition-Liveness-Detection-Ionic-Cordova/blob/b8ee63a4a70ef37fc439386844823c44d1cd1bca/src/SdkContext.tsx#L65-L74
+[https://github.com/identixia-IDV/ID-Document-Recognition-Liveness-Detection-Ionic-Cordova/blob/aec5b6d7ebb66e8ed00a78703057115dcb91533d/src/SdkContext.tsx#L63-L73](https://github.com/identixia-IDV/ID-Document-Recognition-Liveness-Detection-Ionic-Cordova/blob/aec5b6d7ebb66e8ed00a78703057115dcb91533d/src/SdkContext.tsx#L63-L73)
 
 Capabilities: document recognition and/or document liveness. Please [contact us](#-contact) to get a license for **your own app**.
 
@@ -139,14 +144,27 @@ Capabilities: document recognition and/or document liveness. Please [contact us]
 
 ## <img src="https://api.iconify.design/lucide/puzzle.svg?color=%230F766E" width="24" height="24" alt="" /> Use in your app
 
-Add `document-reader-cordova` at tag `v1.0.0`, then activate → init → recognize.
+Add the Cordova plugin package `document-reader-cordova`, ensure the AAR and `docsdk.framework` are on the plugin native paths, then activate → init → recognize.
+
+Depend on `document-reader-cordova` via **git** `ref: v1.0.0` (not a monorepo `path:`). Ship or download the AAR + framework, then activate → init → recognize.
 
 ---
 
 ## <img src="https://api.iconify.design/lucide/images.svg?color=%230F766E" width="24" height="24" alt="" /> Screenshots
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/identixia-IDV/identixia-assets/main/screenshots/document-reader/desktop/demo-ui-result.png" width="720" alt="ID document recognition Gradio demo — front and back capture, fields, and cropped images" />
+<img src="https://raw.githubusercontent.com/identixia-IDV/identixia-assets/main/screenshots/document-reader/desktop/demo-ui-status.png" width="720" alt="Document result status" />
+</p>
+<p align="center">
+<img src="https://raw.githubusercontent.com/identixia-IDV/identixia-assets/main/screenshots/document-reader/desktop/demo-ui-fields-code.png" width="420" alt="CODE fields" />
+<img src="https://raw.githubusercontent.com/identixia-IDV/identixia-assets/main/screenshots/document-reader/desktop/demo-ui-fields-visual.png" width="420" alt="VISUAL fields" />
+</p>
+<p align="center">
+<img src="https://raw.githubusercontent.com/identixia-IDV/identixia-assets/main/screenshots/document-reader/desktop/demo-ui-images.png" width="420" alt="Cropped document images" />
+<img src="https://raw.githubusercontent.com/identixia-IDV/identixia-assets/main/screenshots/document-reader/desktop/demo-ui-checks-validity.png" width="420" alt="Validity checks" />
+</p>
+<p align="center">
+<img src="https://raw.githubusercontent.com/identixia-IDV/identixia-assets/main/screenshots/document-reader/desktop/demo-ui-checks-liveness.png" width="420" alt="Liveness checks" />
 </p>
 
 ---
